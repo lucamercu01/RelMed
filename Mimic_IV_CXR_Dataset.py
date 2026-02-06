@@ -11,6 +11,10 @@ from concurrent.futures import ThreadPoolExecutor
 import requests
 import skimage
 import torchxrayvision as xrv
+import os
+import time
+from pathlib import Path
+import pandas as pd
 
 
 def verify_mimic_access() -> None:
@@ -945,3 +949,8 @@ class MimicDataset(Dataset):
         df = convert_dtypes(df)
 
         return df
+        
+if __name__ == "__main__":
+    dataset = MimicDataset()
+    mimic_db = dataset.get_db()
+    print(mimic_db)
